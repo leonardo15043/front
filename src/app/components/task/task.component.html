@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-6">
+      <h1>Bienvenido a tu lista de tareas</h1>
+      <div *ngFor="let item of tasks; let i = index">
+        <div class="alert " [ngClass]="{'alert-primary': item.item === 'Primary', 'alert-secondary': item.item === 'Secondary', 'alert-success': item.item === 'Success', 'alert-danger': item.item === 'Danger', 'alert-warning': item.item === 'Warning', 'alert-info': item.item === 'Info', 'alert-light': item.item === 'Light', 'alert-dark': item.item === 'Dark' }" role="alert">
+            {{ item.description }}
+
+            <i (click)="deleteTask(item.id, i)" class="bi bi-trash-fill float-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 mt-5">
+        <form (ngSubmit)="saveTask()" #forma="ngForm">
+            <div class="form-group">
+              <label for="task">Tarea</label>
+              <input type="text" class="form-control" id="task" [(ngModel)]="task.txt" name="txt">
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+        </form>
+        <p>Define las tareas segun la importancia con los siguientes items seguidos de la descripcion</p>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-secondary">Secondary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-danger">Danger</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-info">Info</span>
+        <span class="badge badge-light">Light</span>
+        <span class="badge badge-dark">Dark</span>
+    </div>
+</div>
